@@ -3,14 +3,15 @@
   padding: 0;
 }
 $grey: #575656;
+$light-grey:#e0e0e0;
 body {
   font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: max-content;
+  height: 100vh;
 
-  header {
+  .body__header {
     display: flex;
     justify-content: space-between;
     padding: 15px 10px;
@@ -53,6 +54,102 @@ body {
       }
       #sort {
         cursor: pointer;
+      }
+    }
+  }
+  main {
+    .main__title {
+      color: black;
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 3.5em;
+      margin: 60px;
+      margin-bottom: 30px;
+      & > img {
+        width: 50px;
+        margin-right: 10px;
+      }
+    }
+    .main__table-container {
+      width: 90vw;
+      height: 90vh;
+      max-width: 90vw;
+      max-height: 70vh;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      .table-container__header {
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        font-size: 1.3em;
+        align-items: center;
+
+        .header__switch-view {
+          display: flex;
+          align-items: center;
+          height: max-content;
+          width: 100px;
+          justify-content: space-between;
+          cursor: pointer;
+          user-select: none;
+        }
+        .header__tools-bar {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          justify-content: space-between;
+          padding-right: 20px;
+          color: darkgrey;
+
+          .tools-bar__tool {
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            margin: 0 20px;
+            cursor: pointer;
+            user-select: none;
+          }
+          .tools-bar__btn {
+            background: #519cd7;
+            color: white;
+            border-radius: 12px;
+            width: max-content;
+            height: max-content;
+            cursor: pointer;
+            border: none;
+            margin-left: 20px;
+            padding: 10px 15px;
+            font-family: "Roboto", sans-serif;
+            font-size: 0.9em;
+          }
+        }
+      }
+      table {
+        margin-top: 15px;
+        border: 2px solid $light-grey;
+        border-right: none;
+        border-left: none;
+        border-collapse: collapse;
+
+        .table__main-tr {
+          cursor: pointer;
+          user-select: none;
+          color: rgb(117, 117, 117);
+          border-top: 2px solid $light-grey;
+
+          td {
+            padding: 10px 15px;
+            box-sizing: border-box;
+            border: 2px solid $light-grey;
+            border-top: none;
+            border-bottom: none;
+            max-width: 150px;
+            overflow: auto;
+          }
+        }
+       
       }
     }
   }
