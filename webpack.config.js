@@ -44,12 +44,12 @@ const plugins = () => {
         new miniCssExtractTextPlugin({
             filename: `./css/${fileName('css')}`, // можно переименвать файл
         }),
-        /* new copyWebpackPligin({
+        new copyWebpackPligin({
             patterns: [
                 { from: path.resolve(__dirname, 'src/assets/'), to: path.resolve(__dirname, 'app/assets') },
                 { from: path.resolve(__dirname, 'src/img/'), to: path.resolve(__dirname, 'app/img') }
             ]
-        }), */ 
+        }), 
     ]
 
     return basePlugins
@@ -94,7 +94,7 @@ module.exports = {
                 ]
             },
 
-            /* {
+            {
                 test: /\.(?:|gif|png|jpg|jpeg|svg)$/,
                 use: [{
                   loader: 'file-loader',
@@ -102,7 +102,7 @@ module.exports = {
                     name: `./img/${fileName('[ext]')}`
                   }
                 }],
-              }, */
+              },
             {
                 test: /\.js/,
                 exclude: /node_modules/,
