@@ -2,8 +2,13 @@
 <html lang="ru">
 
 <head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <!-- Primary Meta Tags -->
     <title>Lightweight CRM</title>
+    <link rel="shortcut icon" href="img/fa879bfbd28118e869b7da76ac5bf6.png" type="image/x-icon">
     <meta name="title" content="Клон Notion">
     <meta name="description"
         content="Приложение Notion полюбилось многим, оно позволяет оптимизировать рабочий процесс, работать с документами, планировать задачи, синхронизировать данные между устройствами.">
@@ -20,12 +25,28 @@
     <meta property="twitter:description"
         content="Приложение Notion полюбилось многим, оно позволяет оптимизировать рабочий процесс, работать с документами, планировать задачи, синхронизировать данные между устройствами.">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-
+    <header>
+        <h2 class="header__title">
+            <img src="assets/fa879bfbd28118e869b7da76ac5bf6.png" alt="👞">
+            Lightweight CRM
+        </h2>
+        <div class="header__tools-bar">
+            <form action="#">
+                <button class="tools-bar__tool" id="share-btn">Share</button>
+            </form>
+            <p class="tools-bar__tool" id="status-bar">
+                <i class="fas fa-check"></i>Updates
+            </p>
+            <p class="tools-bar__tool" id="sort">
+                Favorite
+            </p>
+        </div>
+    </header>
 </body>
 
 </html>
