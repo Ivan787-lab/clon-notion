@@ -146,9 +146,11 @@ body {
           border-top: none;
           border-bottom: none;
           text-align: left;
+          width: 100px;
           max-width: 160px;
           overflow: auto;
           font-weight: 500;
+          font-size: 18px;
 
           & > i {
             margin-right: 3px;
@@ -168,13 +170,11 @@ body {
 
           .name {
             color: #4c4c4c;
-            font-size: 1.2em;
           }
           .status-span {
             background-color: #e1cee4;
             padding: 5px 15px;
             border-radius: 5px;
-            font-size: 1.1em;
           }
           .price {
             text-align: right;
@@ -188,9 +188,40 @@ body {
           }
           .tel {
             cursor: pointer;
-            color: #4b4c4c;  
+            color: #4b4c4c;
             font-weight: 500;
             text-decoration: none;
+          }
+        }
+      }
+      .table-container__add-row {
+        width: 100%;
+        text-align: left;
+        background: transparent;
+        font-family: "Roboto", sans-serif;
+        color: #dfe0e0;
+        cursor: pointer;
+        border: none;
+        padding: 10px 0;
+        font-size: 1.5em;
+        border-bottom: 2px solid $light-grey;
+      }
+      .table-container__results {
+        display: flex;
+        width: 500px;
+        justify-content: space-around;
+        margin-top: 35px;
+
+        .results__text {
+          color: #a6a6a6;
+          font-weight: 500;
+          font-size: 1.5em;
+
+          #counts {
+            color: #4d4d4d;
+          }
+          #sum {
+            color: #4d4d4d;
           }
         }
       }
