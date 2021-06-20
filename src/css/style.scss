@@ -5,12 +5,6 @@
 $grey: #575656;
 $light-grey: #e0e0e0;
 
-// pink color - #e1cee4
-// violet color - #d3d6e8
-// blue color - #d6eff8
-// green color - #d1e7e5
-// lightgrey color - #f0f0f0
-
 body {
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -136,11 +130,9 @@ body {
       table {
         margin-top: 15px;
         border: 2px solid $light-grey;
-        border-right: none;
-        border-left: none;
         border-collapse: collapse;
         td {
-          padding: 10px 15px;
+          padding: 10px 12px;
           box-sizing: border-box;
           border: 2px solid $light-grey;
           border-top: none;
@@ -155,6 +147,8 @@ body {
           & > i {
             margin-right: 3px;
           }
+
+          
         }
         .table__main-tr {
           cursor: pointer;
@@ -172,9 +166,15 @@ body {
             color: #4c4c4c;
           }
           .status-span {
-            background-color: #e1cee4;
             padding: 5px 15px;
             border-radius: 5px;
+            display: flex;
+            align-items: center;
+            width: max-content;
+            & > img {
+              width: 30px;
+              margin-left: 6px;
+            }
           }
           .price {
             text-align: right;
