@@ -115,16 +115,63 @@ body {
           .tools-bar__btn {
             background: #519cd7;
             color: white;
-            border-radius: 12px;
+            border-radius: 5px;
+            border: none;
             width: max-content;
             height: max-content;
             cursor: pointer;
-            border: none;
             margin-left: 20px;
-            padding: 10px 15px;
+            padding: 5px 15px;
             font-family: "Roboto", sans-serif;
-            font-size: 0.9em;
+            font-size: 0.8em;
+            box-shadow: 0px 0px 1.5px 1px rgba(0, 0, 0, 0.75);
+            margin-top: 2px;
           }
+        }
+      }
+      .table-container__sort-variants {
+        transition: 0.5s max-height;
+        display: flex;
+        flex-wrap: wrap;
+        width: 350px;
+        justify-content: center;
+        align-self: flex-end;
+        margin-right: 55px;
+        max-height: 0;
+        overflow: hidden;
+        .sort-variants__variant {
+          border-radius: 5px;
+          margin: 10px;
+          border: none;
+          font-family: "Roboto", sans-serif;
+          padding: 10px 15px;
+          box-sizing: border-box;
+          font-size: 1.05em;
+          cursor: pointer;
+          background: #e6e6e6;
+          display: flex;
+          align-items: center;
+
+          & > input {
+            margin-right: 10px;
+          }
+        }
+        .sort-variants__make {
+          background: #519cd7;
+          color: white;
+          border-radius: 5px;
+          border: none;
+          width: max-content;
+          height: max-content;
+          cursor: pointer;
+          font-family: "Roboto", sans-serif;
+          padding: 10px 15px;
+          font-size: 1.05em;
+          margin: 10px;
+          box-shadow: 0px 0px 1.5px 1px rgba(0, 0, 0, 0.75);
+        }
+        .sort-variants__variant_active {
+          background: #c8c8c8;
         }
       }
       table {
@@ -138,17 +185,13 @@ body {
           border-top: none;
           border-bottom: none;
           text-align: left;
-          width: 100px;
-          max-width: 160px;
+          max-width: 170px;
           overflow: auto;
           font-weight: 500;
           font-size: 18px;
-
           & > i {
             margin-right: 3px;
           }
-
-          
         }
         .table__main-tr {
           cursor: pointer;
@@ -157,7 +200,7 @@ body {
           border-top: 2px solid $light-grey;
           font-weight: 500;
         }
-        .table__todo-tr {
+        .table__todo-tbody {
           cursor: pointer;
           color: #4b4c4c;
           border-top: 2px solid $light-grey;
@@ -185,6 +228,11 @@ body {
           .check-priority {
             transform: scale(1.9);
             cursor: pointer;
+
+            &:disabled {
+              background: #519cd7;
+              border: none;
+            }
           }
           .tel {
             cursor: pointer;
