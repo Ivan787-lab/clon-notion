@@ -1,46 +1,63 @@
+import { defineAndSort } from "./defineAndSort"
+import deleteFields from "./deleteFields";
+
 let data = [
     {
-        name: 'Sasha',
-        status: 'Proposed',
-        price: 2,
-        confidence: 110,
-        month: 'May',
-        number: 19,
-        year: 2006,
-        highPriority: true,
-        tel: 79623106556,
-        email: 'ivanulanovskij143@gmail.com'
-    }, {
-        name: 'Sasha',
-        status: 'Proposed',
-        price: 2,
-        confidence: 110,
-        month: 'May',
-        number: 19,
-        year: 2006,
-        highPriority: true,
-        tel: 79623106556,
-        email: 'ivanulanovskij143@gmail.com'
+        name: 'Дмитрий',
+        status: 3,
+        price: 56480,
+        confidence: 98,
+        month: 'Июнь',
+        number: 12,
+        year: 2015,
+        priority: true,
+        tel: 74642005646,
+        email: 'iamjs@gmail.com'
     },
+
     {
-        name: 'Sasha',
-        status: 'Proposed',
-        price: 3,
-        confidence: 110,
-        month: 'May',
-        number: 19,
-        year: 2006,
-        highPriority: true,
-        tel: 79623106556,
-        email: 'ivanulanovskij143@gmail.com'
+        name: 'Саша',
+        status: 5,
+        price: 96320,
+        confidence: 53,
+        month: 'Апрель',
+        number: 30,
+        year: 2018,
+        priority: false,
+        tel: 79463024659,
+        email: 'ihatejs@gmail.com'
     },
 
-] // сейчас здесь просто обычный массив с объектом, в будущем планирую брать сведения с бд
+    {
+        name: 'Иван',
+        status: 1,
+        price: 987000,
+        confidence: 86,
+        month: 'Декабрь',
+        number: 31,
+        year: 2006,
+        priority: true,
+        tel: 79623106556,
+        email: 'ilikejs@gmail.com'
+    },
 
-export default function createTable() {
+]
+
+document.querySelector('.sort-variants__make').addEventListener('click', () => {
+    defineAndSort(data)
+    deleteFields()
+    createTable()
+}) /*   
+    здесь происходит следующее:
+    1) определяется по какому принципу будет идти сортировка
+    2) удаляются все поля таблицы, для того чтобы функция createTable могла заново строить таблицу с пересформированным data
+*/
+
+function createTable() {
+
     for (let i = 0; i < data.length; i++) {
-        let tr = document.createElement('tr')
-        tr.classList.add('table__todo-tr')
+        let tbody = document.createElement('tbody')
+        tbody.classList.add('table__todo-tbody')
 
         let name = document.createElement('td')
         name.classList.add('name')
@@ -48,7 +65,17 @@ export default function createTable() {
         // так как встраивать react в проект достаточно сложно, а переписывать весь существующий код под react не хотелось я начал делать так
 
         let status = document.createElement('td')
-        status.innerHTML = `<span class="status-span">${data[i].status}</span>`
+        if (data[i].status == 1) {
+            status.innerHTML = '<span class="status-span">Closed</span>'
+        } else if (data[i].status == 2) {
+            status.innerHTML = '<span class="status-span">Lead</span>'
+        } else if (data[i].status == 3) {
+            status.innerHTML = '<span class="status-span">Proposed</span>'
+        } else if (data[i].status == 4) {
+            status.innerHTML = '<span class="status-span">Contacted</span>'
+        } else if (data[i].status == 5) {
+            status.innerHTML = '<span class="status-span">Lost</span>'
+        }
 
         let price = document.createElement('td')
         price.classList.add('price')
@@ -68,7 +95,7 @@ export default function createTable() {
         date.innerHTML += `${month} ${number}, ${year}`
 
         let priority = document.createElement('td')
-        data[i].highPriority ? priority.innerHTML = '<input class="check-priority" checked type="checkbox">' : priority.innerHTML = '<input class="check-priority" type="checkbox">'
+        data[i].priority ? priority.innerHTML = '<input class="check-priority" disabled checked type="checkbox">' : priority.innerHTML = '<input class="check-priority" disabled type="checkbox">'
         // здесь идет проверка на то является ли свойство true или false и в щависимости от этого input будет выделяться
 
         let tel = document.createElement('td')
@@ -83,8 +110,8 @@ export default function createTable() {
         email.innerHTML = `${data[i].email}`
 
 
-        tr.append(name, status, price, confidence, date, priority, tel, email)
-        document.querySelector('table').append(tr)
+        tbody.append(name, status, price, confidence, date, priority, tel, email)
+        document.querySelector('table').append(tbody)
 
         let statuses = document.querySelectorAll('.status-span')
         Array.from(statuses).map(item => {
@@ -110,9 +137,10 @@ export default function createTable() {
     let prices = document.querySelectorAll('.price-span')
     let sum = 0
     for (let i = 0; i < prices.length; i++) {
-        sum = sum + Number(prices[i].innerHTML)        
+        sum = sum + Number(prices[i].innerHTML)
     }
     document.querySelector('#sum').innerHTML = sum + '$'
+
 }
 
-
+export default createTable
