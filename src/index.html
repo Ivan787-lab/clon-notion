@@ -38,13 +38,13 @@
         </h2>
         <div class="header__tools-bar">
             <form action="#">
-                <button class="tools-bar__tool" id="share-btn">Share</button>
+                <button class="tools-bar__tool" id="share-btn">Поделиться</button>
             </form>
             <p class="tools-bar__tool" id="status-bar">
-                <i class="fas fa-check"></i>Updates
+                <i class="fas fa-check"></i>Обновлено
             </p>
             <p class="tools-bar__tool" id="sort-for-favorite">
-                Favorite
+                Любимые
             </p>
         </div>
     </header>
@@ -57,29 +57,53 @@
             <header class="table-container__header">
                 <p class="header__switch-view">
                     <i class="fas fa-table"></i>
-                    Table
+                    Таблица
                     <i class="fas fa-chevron-down"></i>
                 </p>
                 <div class="header__tools-bar">
-                    <p class="tools-bar__tool" id="filter">Filter</p>
-                    <p class="tools-bar__tool" id="sort">Sort</p>
-                    <p class="tools-bar__tool" id="search">Search</p>
+                    <p class="tools-bar__tool" id="filter">Фильтр</p>
+                    <p class="tools-bar__tool" id="sort">Сортировка</p>
+                    <p class="tools-bar__tool" id="search">Поиск</p>
                     <form action="#">
-                        <button class="tools-bar__btn">New item</button>
+                        <button class="tools-bar__btn">Новая строка</button>
                     </form>
                 </div>
             </header>
+            <div class="table-container__sort-variants">
+                <label class="sort-variants__variant" for="sort-by-name">
+                    <input type="radio" id="sort-by-name" name="variant">
+                    <p>Имени</p>
+                </label>
+                <label class="sort-variants__variant" for="sort-by-status">
+                    <input type="radio" id="sort-by-status" name="variant">
+                    <p>Статусу</p>
+                </label>
+                <label class="sort-variants__variant" for="sort-by-price">
+                    <input type="radio" id="sort-by-price" name="variant">
+                    <p>Оценочной стоимости</p>
+                </label>
+                <label class="sort-variants__variant" for="sort-by-confidence">
+                    <input type="radio" id="sort-by-confidence" name="variant">
+                    <p>Доверию</p>
+                </label>
+                <label class="sort-variants__variant" for="sort-by-priority">
+                    <input type="radio" id="sort-by-priority" name="variant">
+                    <p>Приоритету</p>
+                </label>
+
+                <button class="sort-variants__make">Make</button>
+            </div>
             <table>
-               <tr class="table__main-tr">
-                    <td><i class="fas fa-font"></i> Name</td>
-                    <td><i class="fas fa-chevron-circle-down"></i> Status</td>
-                    <td><i class="fas fa-hashtag"></i> Estimated Value</td>
-                    <td><i class="fas fa-hashtag"></i> Confidence</td>
-                    <td><i class="far fa-calendar-alt"></i> Last contact</td>
-                    <td><i class="far fa-check-square"></i> High priority</td>
-                    <td><i class="fas fa-phone-alt"></i> Phone</td>
+                <thead class="table__main-tr">
+                    <td><i class="fas fa-font"></i>Имя</td>
+                    <td><i class="fas fa-chevron-circle-down"></i>Статус</td>
+                    <td><i class="fas fa-hashtag"></i> Оценочная стоимость</td>
+                    <td><i class="fas fa-hashtag"></i> Доверие</td>
+                    <td><i class="far fa-calendar-alt"></i> Последний контакт</td>
+                    <td><i class="far fa-check-square"></i> Высокий приоритет</td>
+                    <td><i class="fas fa-phone-alt"></i> Телефон</td>
                     <td><i class="far fa-envelope"></i> Email</td>
-                </tr>
+                </thead>
             </table>
             <form action="#">
                 <button class="table-container__add-row">
@@ -91,13 +115,13 @@
                 <p class="results__text">
                     Counts
                     <span id="counts">
-                        
+
                     </span>
                 </p>
                 <p class="results__text">
                     Sum
                     <span id="sum">
-                        
+
                     </span>
                 </p>
             </div>
