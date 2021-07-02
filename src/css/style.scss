@@ -102,8 +102,8 @@ body {
           align-items: center;
           width: max-content;
           justify-content: space-between;
-          padding-right: 20px;
           color: darkgrey;
+          padding-right: 10px;
 
           .tools-bar__tool {
             font-family: "Roboto", sans-serif;
@@ -129,17 +129,16 @@ body {
           }
         }
       }
-      .table-container__sort-variants {
+      .table-container__tools {
+        position: relative;
         transition: 0.5s max-height;
         display: flex;
         flex-wrap: wrap;
-        width: 350px;
         justify-content: center;
         align-self: flex-end;
-        margin-right: 150px;
         max-height: 0;
-        overflow: hidden;
-        .sort-variants__variant {
+          overflow: hidden;
+        .tools-variants__variant {
           border-radius: 5px;
           margin: 10px;
           border: none;
@@ -156,7 +155,7 @@ body {
             margin-right: 10px;
           }
         }
-        .sort-variants__make {
+        .tools-variants__make {
           background: #519cd7;
           color: white;
           border-radius: 5px;
@@ -170,51 +169,8 @@ body {
           margin: 10px;
           box-shadow: 0px 0px 1.5px 1px rgba(0, 0, 0, 0.75);
         }
-       
       }
-      .table-container__filter-variants {
-        transition: 0.5s max-height;
-        display: flex;
-        flex-wrap: wrap;
-        width: 350px;
-        justify-content: center;
-        align-self: flex-end;
-        margin-right: 390px;
-        max-height: 0;
-        overflow: hidden;
-        .filter-variants__variant {
-          border-radius: 5px;
-          margin: 10px;
-          border: none;
-          font-family: "Roboto", sans-serif;
-          padding: 10px 15px;
-          box-sizing: border-box;
-          font-size: 1.05em;
-          cursor: pointer;
-          background: #e6e6e6;
-          display: flex;
-          align-items: center;
 
-          & > input {
-            margin-right: 10px;
-          }
-        }
-        .filter-variants__make {
-          background: #519cd7;
-          color: white;
-          border-radius: 5px;
-          border: none;
-          width: max-content;
-          height: max-content;
-          cursor: pointer;
-          font-family: "Roboto", sans-serif;
-          padding: 10px 15px;
-          font-size: 1.05em;
-          margin: 10px;
-          box-shadow: 0px 0px 1.5px 1px rgba(0, 0, 0, 0.75);
-        }
-        
-      }
       table {
         margin-top: 15px;
         border: 2px solid $light-grey;
