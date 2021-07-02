@@ -1,11 +1,12 @@
 
-function accordeon(sortBtnClass,startWord,containerClass,maxHeight,aLotOfInfo) {
-    const sortBtn = document.querySelector(sortBtnClass)
+
+function accordeon(sortBtn,startWord,containerClass,maxHeight,aLotOfInfo) {
+    const btn = document.querySelector(sortBtn)
     let switcher = false
 
-    sortBtn.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
         if (!switcher) {
-            sortBtn.innerHTML += ' по';
+            btn.innerHTML += ' по';
             switcher = true;
             document.querySelector(containerClass).style.maxHeight = maxHeight;
             if (aLotOfInfo) {
@@ -13,7 +14,7 @@ function accordeon(sortBtnClass,startWord,containerClass,maxHeight,aLotOfInfo) {
                 document.querySelector(containerClass).style.overflow = 'auto';      
             }
         } else {
-            sortBtn.innerHTML = startWord
+            btn.innerHTML = startWord
             switcher = false;
             document.querySelector(containerClass).style.maxHeight = null
         }
@@ -21,7 +22,6 @@ function accordeon(sortBtnClass,startWord,containerClass,maxHeight,aLotOfInfo) {
 } // простая функция для кнопки "Сортировать"
 
 function defineAndSort(array) {
-
     try {
         var method = document.querySelector('input[name = "variant"]:checked').nextElementSibling.innerHTML.toLowerCase() // здесь присваиваю переменной значение следущего элемента после инпута на который кликнули
     } catch (error) {}
