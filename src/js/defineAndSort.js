@@ -26,7 +26,6 @@ function defineAndSort(array) {
         var method = document.querySelector('input[name = "variant"]:checked').nextElementSibling.innerHTML.toLowerCase() // здесь присваиваю переменной значение следущего элемента после инпута на который кликнули
     } catch (error) {}
     // завернул объявление переменной в trycatch во избежаниии ощибок если пользователь ничего не выбрал но нажал на кнопку
-
     if (method == 'имени') {
         array.sort((a, b) => {
             if (a.name > b.name) return 1
@@ -51,7 +50,7 @@ function defineAndSort(array) {
             if (a.confidence > b.confidence) return -1
             return 0
         })
-    } else if (method == 'приориету') {
+    } else if (method == 'приоритету') {
         array.sort((a, b) => {
             if (a.priority < b.priority) return 1
             if (a.priority > b.priority) return -1
