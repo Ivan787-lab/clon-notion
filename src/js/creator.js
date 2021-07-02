@@ -43,15 +43,30 @@ let data = [
 
 ]
 
-document.querySelector('.sort-variants__make').addEventListener('click', () => {
-    defineAndSort(data)
-    deleteFields()
-    createTable()
-}) /*   
-    здесь происходит следующее:
-    1) определяется по какому принципу будет идти сортировка
-    2) удаляются все поля таблицы, для того чтобы функция createTable могла заново строить таблицу с пересформированным data
-*/
+// так как я сделал лишь одно поле для выборта значений для сортировки или фильтрации, понадобилась следущий код
+
+let selectedBtnID; // переменная нужны для поерделения по какой кнопке нажал пользователь, и дальнейшег определения что делать
+let ddd = [...document.querySelectorAll('.tools-bar__tool')] // все кнопки с заданным классом, для удобства сразу превратил в массив
+ddd.splice(0, 3) // обрезал первые три кнопки, так как такой же класс присутсвует и в header
+for (let i = 0; i < ddd.length; i++) {
+    ddd[i].addEventListener('click', () => {
+        selectedBtnID = event.target.id // сразу определяется id той кнопки на которую нажал пользователь
+        if (selectedBtnID == 'sort') { // selectedBtnID равен sort то выполняется сценарий действий для сортировки
+            document.querySelector('.tools-variants__make').addEventListener('click', () => {
+                defineAndSort(data)
+                deleteFields()
+                createTable()
+                // тут изначально формируется сам массив с объектами в функции defineAndSort, затем очищаются все поля с помощью deleteFields для того чтобы createTable могла заново построить таблицу уже с отсортированным массивом
+            })
+        } 
+        if (selectedBtnID == 'filter') { // так как функцию фильрации я еще не успел сделать, то тут будет просто console.log('работает');
+            document.querySelector('.tools-variants__make').addEventListener('click', () => {
+                console.log('работает');
+            })
+        }
+    })
+}
+
 
 function createTable() {
 
