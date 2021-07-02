@@ -66,15 +66,15 @@ function createTable() {
 
         let status = document.createElement('td')
         if (data[i].status == 1) {
-            status.innerHTML = '<span class="status-span">Closed</span>'
+            status.innerHTML = '<span class="status-span">Закрыт</span>'
         } else if (data[i].status == 2) {
-            status.innerHTML = '<span class="status-span">Lead</span>'
+            status.innerHTML = '<span class="status-span">Ведется</span>'
         } else if (data[i].status == 3) {
-            status.innerHTML = '<span class="status-span">Proposed</span>'
+            status.innerHTML = '<span class="status-span">Планируется</span>'
         } else if (data[i].status == 4) {
-            status.innerHTML = '<span class="status-span">Contacted</span>'
+            status.innerHTML = '<span class="status-span">Связался</span>'
         } else if (data[i].status == 5) {
-            status.innerHTML = '<span class="status-span">Lost</span>'
+            status.innerHTML = '<span class="status-span">Потерянный</span>'
         }
 
         let price = document.createElement('td')
@@ -115,17 +115,17 @@ function createTable() {
 
         let statuses = document.querySelectorAll('.status-span')
         Array.from(statuses).map(item => {
-            if (item.innerHTML == 'Lead') {
+            if (item.innerHTML == 'Ведется') {
                 item.style.background = '#e1cee4'
-            } else if (item.innerHTML == 'Contacted') {
+            } else if (item.innerHTML == 'Связался') {
                 item.style.background = '#d3d6e8'
-            } else if (item.innerHTML == 'Proposed') {
+            } else if (item.innerHTML == 'Планируется') {
                 item.style.background = '#d6eff8'
                 item.innerHTML += '<img src="assets/eyes.png">'
-            } else if (item.innerHTML == 'Closed') {
+            } else if (item.innerHTML == 'Закрыт') {
                 item.style.background = '#d1e7e5'
                 item.innerHTML += '<img src="assets/biceps.png">'
-            } else if (item.innerHTML == 'Lost') {
+            } else if (item.innerHTML == 'Потерянный') {
                 item.style.background = '#f0f0f0'
             }
         })
