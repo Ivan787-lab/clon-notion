@@ -1,23 +1,24 @@
+import defineAndFilter from "./defineAndFilter";
 import { defineAndSort } from "./defineAndSort"
 import deleteFields from "./deleteFields";
-
+let _ = require('lodash')
 let data = [
     {
-        name: 'Дмитрий',
-        status: 3,
-        price: 56480,
-        confidence: 98,
+        name: 'Яков',
+        status: 1,
+        price: 20000,
+        confidence: 20,
         month: 'Июнь',
         number: 12,
         year: 2015,
-        priority: true,
+        priority: false,
         tel: 74642005646,
         email: 'iamjs@gmail.com'
     },
 
     {
         name: 'Саша',
-        status: 5,
+        status: 4,
         price: 96320,
         confidence: 53,
         month: 'Апрель',
@@ -30,7 +31,7 @@ let data = [
 
     {
         name: 'Иван',
-        status: 1,
+        status: 2,
         price: 987000,
         confidence: 86,
         month: 'Декабрь',
@@ -55,74 +56,80 @@ for (let i = 0; i < ddd.length; i++) {
             document.querySelector('.tools-variants__make').addEventListener('click', () => {
                 defineAndSort(data)
                 deleteFields()
-                createTable()
+                createTable(data)
                 // тут изначально формируется сам массив с объектами в функции defineAndSort, затем очищаются все поля с помощью deleteFields для того чтобы createTable могла заново построить таблицу уже с отсортированным массивом
             })
-        } 
+        }
         if (selectedBtnID == 'filter') { // так как функцию фильрации я еще не успел сделать, то тут будет просто console.log('работает');
             document.querySelector('.tools-variants__make').addEventListener('click', () => {
-                console.log('работает');
+                defineAndFilter(data)
+                let copy = _.cloneDeep(data) // тут создается глубокая копия массива data для того чтобы можно было его здесь локально обрезать не делая ничего с оригинальным массивом
+                console.log(copy);
+
+                copy.splice(1,copy.length) // обрезаю чтобы выводилось только первое значение
+                deleteFields()
+                createTable(copy) // вызывается функция для создания строк таблицы с глубоко скопированным массивом
             })
         }
     })
 }
 
 
-function createTable() {
+function createTable(array) { // я специально здесь поставил параметр array, для того чтобы при фильтрации вызывать эту функцию с глубоко скопированным массивом
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         let tbody = document.createElement('tbody')
         tbody.classList.add('table__todo-tbody')
 
         let name = document.createElement('td')
         name.classList.add('name')
-        name.innerHTML = `<i class="far fa-file-alt"></i> <span class="name-span">${data[i].name}</span>`;
+        name.innerHTML = `<i class="far fa-file-alt"></i> <span class="name-span">${array[i].name}</span>`;
         // так как встраивать react в проект достаточно сложно, а переписывать весь существующий код под react не хотелось я начал делать так
 
         let status = document.createElement('td')
-        if (data[i].status == 1) {
+        if (array[i].status == 1) {
             status.innerHTML = '<span class="status-span">Закрыт</span>'
-        } else if (data[i].status == 2) {
+        } else if (array[i].status == 2) {
             status.innerHTML = '<span class="status-span">Ведется</span>'
-        } else if (data[i].status == 3) {
+        } else if (array[i].status == 3) {
             status.innerHTML = '<span class="status-span">Планируется</span>'
-        } else if (data[i].status == 4) {
+        } else if (array[i].status == 4) {
             status.innerHTML = '<span class="status-span">Связался</span>'
-        } else if (data[i].status == 5) {
+        } else if (array[i].status == 5) {
             status.innerHTML = '<span class="status-span">Потерянный</span>'
         }
 
         let price = document.createElement('td')
         price.classList.add('price')
-        price.innerHTML = `$<span class="price-span">${data[i].price}</span>`
+        price.innerHTML = `$<span class="price-span">${array[i].price}</span>`
 
         let confidence = document.createElement('td')
         confidence.classList.add('confidence')
-        confidence.innerHTML = `${data[i].confidence}%`
+        confidence.innerHTML = `${array[i].confidence}%`
 
         let date = document.createElement('td')
         let [month, number, year] =
             [
-                `<span class="month">${data[i].month}</span>`,
-                `<span class="number">${data[i].number}</span>`,
-                `<span class="year">${data[i].year}</span>`,
+                `<span class="month">${array[i].month}</span>`,
+                `<span class="number">${array[i].number}</span>`,
+                `<span class="year">${array[i].year}</span>`,
             ]
         date.innerHTML += `${month} ${number}, ${year}`
 
         let priority = document.createElement('td')
-        data[i].priority ? priority.innerHTML = '<input class="check-priority" disabled checked type="checkbox">' : priority.innerHTML = '<input class="check-priority" disabled type="checkbox">'
+        array[i].priority ? priority.innerHTML = '<input class="check-priority" disabled checked type="checkbox">' : priority.innerHTML = '<input class="check-priority" disabled type="checkbox">'
         // здесь идет проверка на то является ли свойство true или false и в щависимости от этого input будет выделяться
 
         let tel = document.createElement('td')
         let linkToPhone = document.createElement('a')
-        linkToPhone.setAttribute('href', `tel: ${data[i].tel}`)
-        linkToPhone.innerHTML = `+${data[i].tel}`
+        linkToPhone.setAttribute('href', `tel: ${array[i].tel}`)
+        linkToPhone.innerHTML = `+${array[i].tel}`
         linkToPhone.classList.add('tel')
         tel.append(linkToPhone)
 
         let email = document.createElement('td')
         email.classList.add('email')
-        email.innerHTML = `${data[i].email}`
+        email.innerHTML = `${array[i].email}`
 
 
         tbody.append(name, status, price, confidence, date, priority, tel, email)
@@ -148,7 +155,7 @@ function createTable() {
         // здесь просто определяется цвет под статус каждой задачи
     }
 
-    document.querySelector('#counts').innerHTML = data.length
+    document.querySelector('#counts').innerHTML = array.length
     let prices = document.querySelectorAll('.price-span')
     let sum = 0
     for (let i = 0; i < prices.length; i++) {
@@ -158,4 +165,4 @@ function createTable() {
 
 }
 
-export default createTable
+export { createTable, data }
