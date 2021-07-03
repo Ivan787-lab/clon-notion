@@ -5,14 +5,14 @@ let _ = require('lodash')
 let data = [
     {
         name: 'Яков',
-        status: 1,
+        status: 3,
         price: 20000,
         confidence: 20,
         month: 'Июнь',
         number: 12,
         year: 2015,
         priority: false,
-        tel: 74642005646,
+        tel: '+74642005646',
         email: 'iamjs@gmail.com'
     },
 
@@ -25,7 +25,7 @@ let data = [
         number: 30,
         year: 2018,
         priority: false,
-        tel: 79463024659,
+        tel: '+79463024659',
         email: 'ihatejs@gmail.com'
     },
 
@@ -38,11 +38,12 @@ let data = [
         number: 31,
         year: 2006,
         priority: true,
-        tel: 79623106556,
+        tel: '+79623106556',
         email: 'ilikejs@gmail.com'
     },
 
 ]
+
 // так как я сделал лишь одно поле для выборта значений для сортировки или фильтрации, понадобилась следущий код
 let selectedBtnID; // переменная нужны для поерделения по какой кнопке нажал пользователь, и дальнейшег определения что делать
 let allBtns = [...document.querySelectorAll('.tools-bar__tool')] // все кнопки с заданным классом, для удобства сразу превратил в массив
@@ -53,17 +54,17 @@ for (let i = 0; i < allBtns.length; i++) {
         if (selectedBtnID == 'sort') { // selectedBtnID равен sort то выполняется сценарий действий для сортировки
             document.querySelector('.tools-variants__make').addEventListener('click', () => {
                 let copy = _.cloneDeep(data) // сам data уже не будет участвовать ни в фильтрации ни  сортировке, так как это бы помешало исрользоать кнопку "отменить изменения", вместо этого создается глубокая копия data и используется она
-                defineAndSort(copy) 
+                defineAndSort(copy)
                 deleteFields()
                 createTable(copy)
                 // тут изначально формируется сам массив с объектами в функции defineAndSort, затем очищаются все поля с помощью deleteFields для того чтобы createTable могла заново построить таблицу уже с отсортированным массивом
             })
         }
-        if (selectedBtnID == 'filter') { // так как функцию фильрации я еще не успел сделать, то тут будет просто console.log('работает');
+        else if (selectedBtnID == 'filter') { // так как функцию фильрации я еще не успел сделать, то тут будет просто console.log('работает');
             document.querySelector('.tools-variants__make').addEventListener('click', () => {
                 let copy = _.cloneDeep(data) // тут создается глубокая копия массива data для того чтобы можно было его здесь локально обрезать не делая ничего с оригинальным массивом
                 defineAndFilter(copy)
-                copy.splice(1,copy.length) // обрезаю чтобы выводилось только первое значение
+                copy.splice(1, copy.length) // обрезаю чтобы выводилось только первое значение
                 deleteFields()
                 createTable(copy) // вызывается функция для создания строк таблицы с глубоко скопированным массивом
             })
@@ -124,7 +125,7 @@ function createTable(array) { // я специально здесь постав
         let tel = document.createElement('td')
         let linkToPhone = document.createElement('a')
         linkToPhone.setAttribute('href', `tel: ${array[i].tel}`)
-        linkToPhone.innerHTML = `+${array[i].tel}`
+        linkToPhone.innerHTML = array[i].tel
         linkToPhone.classList.add('tel')
         tel.append(linkToPhone)
 
