@@ -43,29 +43,26 @@ let data = [
     },
 
 ]
-
 // так как я сделал лишь одно поле для выборта значений для сортировки или фильтрации, понадобилась следущий код
-
 let selectedBtnID; // переменная нужны для поерделения по какой кнопке нажал пользователь, и дальнейшег определения что делать
-let ddd = [...document.querySelectorAll('.tools-bar__tool')] // все кнопки с заданным классом, для удобства сразу превратил в массив
-ddd.splice(0, 3) // обрезал первые три кнопки, так как такой же класс присутсвует и в header
-for (let i = 0; i < ddd.length; i++) {
-    ddd[i].addEventListener('click', () => {
+let allBtns = [...document.querySelectorAll('.tools-bar__tool')] // все кнопки с заданным классом, для удобства сразу превратил в массив
+allBtns.splice(0, 3) // обрезал первые три кнопки, так как такой же класс присутсвует и в header
+for (let i = 0; i < allBtns.length; i++) {
+    allBtns[i].addEventListener('click', () => {
         selectedBtnID = event.target.id // сразу определяется id той кнопки на которую нажал пользователь
         if (selectedBtnID == 'sort') { // selectedBtnID равен sort то выполняется сценарий действий для сортировки
             document.querySelector('.tools-variants__make').addEventListener('click', () => {
-                defineAndSort(data)
+                let copy = _.cloneDeep(data) // сам data уже не будет участвовать ни в фильтрации ни  сортировке, так как это бы помешало исрользоать кнопку "отменить изменения", вместо этого создается глубокая копия data и используется она
+                defineAndSort(copy) 
                 deleteFields()
-                createTable(data)
+                createTable(copy)
                 // тут изначально формируется сам массив с объектами в функции defineAndSort, затем очищаются все поля с помощью deleteFields для того чтобы createTable могла заново построить таблицу уже с отсортированным массивом
             })
         }
         if (selectedBtnID == 'filter') { // так как функцию фильрации я еще не успел сделать, то тут будет просто console.log('работает');
             document.querySelector('.tools-variants__make').addEventListener('click', () => {
-                defineAndFilter(data)
                 let copy = _.cloneDeep(data) // тут создается глубокая копия массива data для того чтобы можно было его здесь локально обрезать не делая ничего с оригинальным массивом
-                console.log(copy);
-
+                defineAndFilter(copy)
                 copy.splice(1,copy.length) // обрезаю чтобы выводилось только первое значение
                 deleteFields()
                 createTable(copy) // вызывается функция для создания строк таблицы с глубоко скопированным массивом
@@ -74,6 +71,10 @@ for (let i = 0; i < ddd.length; i++) {
     })
 }
 
+document.querySelector('.tools-variants__return-to-default').addEventListener('click', () => {
+    deleteFields()
+    createTable(data)
+}) // небольшая функция для отмены всех изменений произошедших с сортировкой или фильрацией
 
 function createTable(array) { // я специально здесь поставил параметр array, для того чтобы при фильтрации вызывать эту функцию с глубоко скопированным массивом
 
