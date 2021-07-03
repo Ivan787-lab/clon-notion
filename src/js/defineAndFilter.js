@@ -28,12 +28,11 @@ export default function defineAndFilter(array) {
             if (a.confidence > b.confidence) return -1
             return 0
         })
-    } else if (method == 'приориету') {
+    } else if (method == 'приоритету') {
         array.sort((a, b) => {
-            if (a.priority > b.priority) return 1
-            if (a.priority < b.priority) return -1
+            if (a.priority < b.priority) return 1
+            if (a.priority > b.priority) return -1
             return 0
         })
     }
-    // 
 }
