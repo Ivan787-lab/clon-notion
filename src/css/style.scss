@@ -112,6 +112,10 @@ body {
             cursor: pointer;
             user-select: none;
           }
+          .tools-bar__tool_active {
+            color: $grey;
+          }
+
           .tools-bar__btn {
             background: #519cd7;
             color: white;
@@ -129,15 +133,12 @@ body {
           }
         }
       }
-      .table-container__tools {
+      .table-container__tools-variants {
         position: relative;
-        transition: 0.5s max-height;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-self: flex-end;
-        max-height: 0;
-          overflow: hidden;
         .tools-variants__variant {
           border-radius: 5px;
           margin: 10px;
