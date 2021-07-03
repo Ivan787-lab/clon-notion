@@ -1,26 +1,4 @@
 
-
-function accordeon(sortBtn,startWord,containerClass,maxHeight,aLotOfInfo) {
-    const btn = document.querySelector(sortBtn)
-    let switcher = false
-
-    btn.addEventListener('click', () => {
-        if (!switcher) {
-            btn.innerHTML += ' по';
-            switcher = true;
-            document.querySelector(containerClass).style.maxHeight = maxHeight;
-            if (aLotOfInfo) {
-                document.querySelector(containerClass).style.marginTop = '15px';
-                document.querySelector(containerClass).style.overflow = 'auto';      
-            }
-        } else {
-            btn.innerHTML = startWord
-            switcher = false;
-            document.querySelector(containerClass).style.maxHeight = null
-        }
-    });
-} // простая функция для кнопки "Сортировать"
-
 function defineAndSort(array) {
     try {
         var method = document.querySelector('input[name = "variant"]:checked').nextElementSibling.innerHTML.toLowerCase() // здесь присваиваю переменной значение следущего элемента после инпута на который кликнули
@@ -59,4 +37,4 @@ function defineAndSort(array) {
     }
 }
 
-export { accordeon, defineAndSort }
+export { defineAndSort }
