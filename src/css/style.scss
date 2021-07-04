@@ -285,6 +285,100 @@ body {
           }
         }
       }
+      .table-container__new-row-configurator {
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        flex-wrap: wrap;
+        height: 210px;
+
+        .new-row-configurator__label {
+          margin: 15px;
+          width: max-content;
+          & > input {
+            font-family: "Roboto", sans-serif;
+            outline: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            border: 2px solid #e0e0e0;
+          }
+
+          .label__text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.2em;
+          }
+          #configure-the-price {
+            padding-right: 0;
+          }
+          #configure-the-trust {
+            padding-right: 0;
+          }
+          .select-priority {
+            display: flex;
+            align-items: center;
+
+            .label__text {
+              margin-top: 0;
+              margin-left: 10px;
+            }
+          }
+          .label__select-status {
+            height: 75px;
+            max-height: 65px;
+            overflow: auto;
+            padding: 5px;
+            box-sizing: border-box;
+            width: 200px;
+
+            .select-status__container {
+              padding: 10px 19px;
+              border-radius: 5px;
+              display: flex;
+              align-items: center;
+              width: max-content;
+              margin: 0 auto;
+              margin-top: 15px;
+              .label__text {
+                margin-top: 0;
+                margin-left: 10px;
+              }
+            }
+            #one {
+              background: #d1e7e5;
+            }
+            #two {
+              background: #e1cee4;
+            }
+            #three {
+              background: #d6eff8;
+            }
+            #four {
+              background: #d3d6e8;
+            }
+            #five {
+              background: #f0f0f0;
+            }
+          }
+        }
+        .new-row-configurator__make {
+          background: #519cd7;
+          color: white;
+          border-radius: 5px;
+          border: none;
+          width: max-content;
+          height: max-content;
+          cursor: pointer;
+          font-family: "Roboto", sans-serif;
+          padding: 10px 15px;
+          font-size: 1.05em;
+          box-shadow: 0px 0px 1.5px 1px rgb(0 0 0 / 75%);
+          margin-left: -290px;
+          margin-top: -10px;
+        }
+
+      }
     }
   }
 }
