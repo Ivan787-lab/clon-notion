@@ -46,7 +46,8 @@ let data = [
 
 // так как я сделал лишь одно поле для выборта значений для сортировки или фильтрации, понадобилась следущий код
 let selectedBtnID; // переменная нужны для поерделения по какой кнопке нажал пользователь, и дальнейшег определения что делать
-let allBtns = [...document.querySelectorAll('.tools-bar__tool')] // все кнопки с заданным классом, для удобства сразу превратил в массив
+
+const allBtns = [...document.querySelectorAll('.tools-bar__tool')] // все кнопки с заданным классом, для удобства сразу превратил в массив
 allBtns.splice(0, 3) // обрезал первые три кнопки, так как такой же класс присутсвует и в header
 for (let i = 0; i < allBtns.length; i++) {
     allBtns[i].addEventListener('click', () => {
@@ -75,6 +76,10 @@ for (let i = 0; i < allBtns.length; i++) {
 document.querySelector('.tools-variants__return-to-default').addEventListener('click', () => {
     deleteFields()
     createTable(data)
+    try {
+        document.querySelector('.tools-variants__variant input[type="radio"]:checked').checked = false
+    } catch (e) {} // при отмене изменений с input`а снимается выделение, а в trycatch`е это потому что будет ошибка если пользователей нажмет на кнопку отменить просто так
+
 }) // небольшая функция для отмены всех изменений произошедших с сортировкой или фильрацией
 
 function createTable(array) { // я специально здесь поставил параметр array, для того чтобы при фильтрации вызывать эту функцию с глубоко скопированным массивом
