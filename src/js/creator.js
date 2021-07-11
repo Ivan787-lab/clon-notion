@@ -1,3 +1,4 @@
+import createNewRow from "./createNewRow";
 import defineAndFilter from "./defineAndFilter";
 import { defineAndSort } from "./defineAndSort"
 import deleteFields from "./deleteFields";
@@ -45,14 +46,14 @@ let data = [
 ]
 
 // так как я сделал лишь одно поле для выборта значений для сортировки или фильтрации, понадобилась следущий код
-let selectedBtnID; // переменная нужны для поерделения по какой кнопке нажал пользователь, и дальнейшег определения что делать
+let selectedBtnData; // переменная нужны для поерделения по какой кнопке нажал пользователь, и дальнейшег определения что делать
 
 const allBtns = [...document.querySelectorAll('.tools-bar__tool')] // все кнопки с заданным классом, для удобства сразу превратил в массив
 allBtns.splice(0, 3) // обрезал первые три кнопки, так как такой же класс присутсвует и в header
 for (let i = 0; i < allBtns.length; i++) {
     allBtns[i].addEventListener('click', () => {
-        selectedBtnID = event.target.id // сразу определяется id той кнопки на которую нажал пользователь
-        if (selectedBtnID == 'sort') { // selectedBtnID равен sort то выполняется сценарий действий для сортировки
+        selectedBtnData = event.target.dataset.method // сразу определяется data той кнопки на которую нажал пользователь
+        if (selectedBtnData == 'sort') { // selectedBtnID равен sort то выполняется сценарий действий для сортировки
             document.querySelector('.tools-variants__make').addEventListener('click', () => {
                 let copy = _.cloneDeep(data) // сам data уже не будет участвовать ни в фильтрации ни  сортировке, так как это бы помешало исрользоать кнопку "отменить изменения", вместо этого создается глубокая копия data и используется она
                 defineAndSort(copy)
@@ -61,7 +62,7 @@ for (let i = 0; i < allBtns.length; i++) {
                 // тут изначально формируется сам массив с объектами в функции defineAndSort, затем очищаются все поля с помощью deleteFields для того чтобы createTable могла заново построить таблицу уже с отсортированным массивом
             })
         }
-        else if (selectedBtnID == 'filter') { // так как функцию фильрации я еще не успел сделать, то тут будет просто console.log('работает');
+        else if (selectedBtnData == 'filter') { // так как функцию фильрации я еще не успел сделать, то тут будет просто console.log('работает');
             document.querySelector('.tools-variants__make').addEventListener('click', () => {
                 let copy = _.cloneDeep(data) // тут создается глубокая копия массива data для того чтобы можно было его здесь локально обрезать не делая ничего с оригинальным массивом
                 defineAndFilter(copy)
@@ -78,9 +79,41 @@ document.querySelector('.tools-variants__return-to-default').addEventListener('c
     createTable(data)
     try {
         document.querySelector('.tools-variants__variant input[type="radio"]:checked').checked = false
-    } catch (e) {} // при отмене изменений с input`а снимается выделение, а в trycatch`е это потому что будет ошибка если пользователей нажмет на кнопку отменить просто так
+    } catch (e) { } // при отмене изменений с input`а снимается выделение, а в trycatch`е это потому что будет ошибка если пользователей нажмет на кнопку отменить просто так
 
 }) // небольшая функция для отмены всех изменений произошедших с сортировкой или фильрацией
+
+let switcher1 = false
+document.querySelector('.tools-bar__btn').addEventListener('click', () => {
+    if (!switcher1) {
+        document.querySelector('.table-container__new-row-configurator').style.display = 'flex'
+        document.querySelector('.tools-bar__btn').innerText = 'Отменить'
+        switcher1 = true
+    } else {
+        document.querySelector('.table-container__new-row-configurator').style.display = 'none'
+        document.querySelector('.tools-bar__btn').innerText = 'Новая строка'
+        switcher1 = false
+    }
+}) // небольшой код для того чтобы можно было показывать и прятать панель настроек новой строки
+
+document.querySelector('.new-row-configurator__make').addEventListener('click', () => {
+    createNewRow(data)
+    deleteFields()
+    createTable(data)
+    document.querySelector('.table-container__new-row-configurator').style.display = 'none'
+    document.querySelector('.tools-bar__btn').innerText = 'Новая строка'
+})
+
+let switcher2 = false
+document.querySelector('.table-container__add-row').addEventListener('click', () => {
+    if (!switcher2) {
+        document.querySelector('.table-container__new-row-configurator').style.display = 'flex'
+        switcher2 = true
+    } else {
+        document.querySelector('.table-container__new-row-configurator').style.display = 'none'
+        switcher2 = false
+    }
+}) // небольшой код для того чтобы можно было показывать и прятать панель настроек новой строки
 
 function createTable(array) { // я специально здесь поставил параметр array, для того чтобы при фильтрации вызывать эту функцию с глубоко скопированным массивом
 
