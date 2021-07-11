@@ -61,8 +61,8 @@
                     <i class="fas fa-chevron-down"></i>
                 </p>
                 <div class="header__tools-bar">
-                    <p class="tools-bar__tool" id="filter">Фильтр</p>
-                    <p class="tools-bar__tool" id="sort">Сортировка</p>
+                    <p class="tools-bar__tool" id="filter" data-method="filter">Фильтр</p>
+                    <p class="tools-bar__tool" id="sort" data-method="sort">Сортировка</p>
                     <form action="#">
                         <button class="tools-bar__btn">Новая строка</button>
                     </form>
@@ -128,19 +128,19 @@
             </div>
             <div class="table-container__new-row-configurator">
                 <label for="configure-the-name" class="new-row-configurator__label">
-                    <input type="text" id="configure-the-name">
+                    <input type="text"  id="configure-the-name">
                     <p class="label__text">Имя</p>
                 </label>
 
                 <label for="configure-the-price" class="new-row-configurator__label">
-                    <input type="number" id="configure-the-price">
+                    <input type="number"  id="configure-the-price">
                     <p class="label__text">Оценочная стоимость</p>
-                </label>
+                </label> <!-- сделать потом выбор валюты -->
 
-                <!-- сделать потом выбор валюты -->
+
                 <label for="configure-the-trust" class="new-row-configurator__label">
-                    <input type="number" id="configure-the-trust">
-                    <p class="label__text">Доверие</p>
+                    <input min="0" max="100"  type="number" id="configure-the-trust">
+                    <p class="label__text">Доверие (в процентах)</p>
                 </label>
 
                 <label for="configure-the-last-contact" class="new-row-configurator__label">
@@ -151,23 +151,23 @@
                 <label class="new-row-configurator__label">
                     <p class="label__text">Высокий ли приоритет?</p>
                     <label class="select-priority" for="yes">
-                        <input type="radio" name="select-priority" id="yes">
+                        <input  data-agreee="true" type="radio" name="select-priority" id="yes">
                         <p class="label__text">Да</p>
                     </label>
 
                     <label class="select-priority" for="no">
-                        <input type="radio" name="select-priority" id="no">
+                        <input data-agreee="false" type="radio" name="select-priority" id="no">
                         <p class="label__text">Нет</p>
                     </label>
                 </label>
 
                 <label for="configure-the-tel" class="new-row-configurator__label">
-                    <input type="tel" id="configure-the-tel">
+                    <input type="tel"  id="configure-the-tel">
                     <p class="label__text">Телефон</p>
                 </label>
 
                 <label for="configure-the-email" class="new-row-configurator__label">
-                    <input type="email" id="configure-the-email">
+                    <input type="email"  id="configure-the-email">
                     <p class="label__text">Электронная почта</p>
                 </label>
 
@@ -175,28 +175,28 @@
                     <p class="label__text">Выберите статус:</p>
                     <div class="label__select-status">
 
-                        <label id="one" class="select-status__container" for="one-input">
-                            <input id="one-input" name="status" type="radio">
+                        <label id="one" class="select-status__container" for="closed">
+                            <input data-status="1" id="closed" name="status" type="radio">
                             <p class="label__text">Закрыт</p>
                         </label>
 
-                        <label id="two" class="select-status__container" for="two-input">
-                            <input id="two-input" name="status" type="radio">
+                        <label id="two" class="select-status__container" for="lead">
+                            <input data-status="2" id="lead" name="status" type="radio">
                             <p class="label__text">Ведется</p>
                         </label>
 
-                        <label id="three" class="select-status__container" for="three-input">
-                            <input id="three-input" name="status" type="radio">
+                        <label id="three" class="select-status__container" for="proposed">
+                            <input data-status="3" id="proposed" name="status" type="radio">
                             <p class="label__text">Планируется</p>
                         </label>
 
-                        <label id="four" class="select-status__container" for="four-input">
-                            <input id="four-input" name="status" type="radio">
+                        <label id="four" class="select-status__container" for="contacted">
+                            <input data-status="4" id="contacted" name="status" type="radio">
                             <p class="label__text">Связался</p>
                         </label>
 
-                        <label id="five" class="select-status__container" for="five-input">
-                            <input id="five-input" name="status" type="radio">
+                        <label id="five" class="select-status__container" for="lost">
+                            <input data-status="5" id="lost" name="status" type="radio">
                             <p class="label__text">Потерянный</p>
                         </label>
                     </div>
