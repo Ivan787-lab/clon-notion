@@ -28,6 +28,7 @@ export default function createNewRow(array) {
     price.value = ''
     confidence.value = ''
     priority.checked = false
+    document.getElementById('configure-the-last-contact').value = ''
     tel.value = ''
     email.value = '' 
     // удаляется значение из поля для ввода

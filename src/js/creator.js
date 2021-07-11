@@ -3,48 +3,8 @@ import defineAndFilter from "./defineAndFilter";
 import { defineAndSort } from "./defineAndSort"
 import deleteFields from "./deleteFields";
 let _ = require('lodash')
-let data = [
-    {
-        name: 'Яков',
-        status: 3,
-        price: 20000,
-        confidence: 20,
-        month: 'Июнь',
-        number: 12,
-        year: 2015,
-        priority: false,
-        tel: '+74642005646',
-        email: 'iamjs@gmail.com'
-    },
 
-    {
-        name: 'Саша',
-        status: 4,
-        price: 96320,
-        confidence: 53,
-        month: 'Апрель',
-        number: 30,
-        year: 2018,
-        priority: false,
-        tel: '+79463024659',
-        email: 'ihatejs@gmail.com'
-    },
-
-    {
-        name: 'Иван',
-        status: 2,
-        price: 987000,
-        confidence: 86,
-        month: 'Декабрь',
-        number: 31,
-        year: 2006,
-        priority: true,
-        tel: '+79623106556',
-        email: 'ilikejs@gmail.com'
-    },
-
-]
-
+let data = []
 // так как я сделал лишь одно поле для выборта значений для сортировки или фильтрации, понадобилась следущий код
 let selectedBtnData; // переменная нужны для поерделения по какой кнопке нажал пользователь, и дальнейшег определения что делать
 
