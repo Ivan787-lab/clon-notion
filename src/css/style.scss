@@ -383,7 +383,206 @@ body {
           font-size: 1.05em;
           box-shadow: 0px 0px 1.5px 1px rgb(0 0 0 / 75%);
         }
+      }
+    }
+  }
 
+}
+
+
+@media (max-width: 425px) {
+  body {
+    .body__header {
+      width: 100%;
+      flex-direction: column;
+      .header__title {
+        margin: 0 auto;
+      }
+      .header__tools-bar {
+        flex-direction: column;
+        margin: 0 auto;
+      }
+    }
+    main {
+      .main__title {
+        color: black;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 2em;
+        margin: 0 auto;
+        & > img {
+          width: 40px;
+          margin-right: 10px;
+        }
+      }
+      .main__table-container {
+        .table-container__header {
+          flex-direction: column;
+
+          .header__tools-bar {
+            flex-direction: column;
+
+            .tools-bar__tool {
+              margin: 10px;
+            }
+          }
+        }
+        .table-container__results {
+          flex-direction: column;
+          width: max-content;
+        }
+        .table-container__new-row-configurator {
+          display: flex;
+          flex-direction: column;
+          align-content: space-between;
+          flex-wrap: wrap;
+          height: max-content;
+          display: none;
+
+          flex-direction: none;
+          flex-wrap: none;
+
+          .new-row-configurator__label {
+            margin: 10px 0;
+            width: 100%;
+            & > input {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  body {
+    .body__header {
+      width: 100%;
+      flex-direction: column;
+      .header__title {
+        margin: 0 auto;
+      }
+      .header__tools-bar {
+        flex-direction: column;
+        margin: 0 auto;
+      }
+    }
+    main {
+      .main__title {
+        color: black;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 2em;
+        margin: 0 auto;
+        & > img {
+          width: 40px;
+          margin-right: 10px;
+        }
+      }
+      .main__table-container {
+        .table-container__header {
+          flex-direction: column;
+
+          .header__tools-bar {
+            flex-direction: column;
+
+            .tools-bar__tool {
+              margin: 10px;
+            }
+          }
+        }
+        .table-container__results {
+          flex-direction: column;
+          width: max-content;
+        }
+        .table-container__new-row-configurator {
+          display: flex;
+          flex-direction: column;
+          align-content: space-between;
+          flex-wrap: wrap;
+          height: max-content;
+          display: none;
+
+          flex-direction: none;
+          flex-wrap: none;
+
+          .new-row-configurator__label {
+            margin: 10px 0;
+            width: 100%;
+            & > input {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    .body__header {
+      width: 100%;
+      flex-direction: column;
+      .header__title {
+        margin: 0 auto;
+      }
+      .header__tools-bar {
+        flex-direction: column;
+        margin: 0 auto;
+      }
+    }
+    main {
+      .main__title {
+        color: black;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 2em;
+        margin: 0 auto;
+        & > img {
+          width: 40px;
+          margin-right: 10px;
+        }
+      }
+      .main__table-container {
+        .table-container__header {
+          flex-direction: column;
+
+          .header__tools-bar {
+            flex-direction: column;
+
+            .tools-bar__tool {
+              margin: 10px;
+            }
+          }
+        }
+        .table-container__results {
+          flex-direction: column;
+          width: max-content;
+        }
+        .table-container__new-row-configurator {
+          display: flex;
+          flex-direction: column;
+          align-content: space-between;
+          flex-wrap: wrap;
+          height: max-content;
+          display: none;
+
+          flex-direction: none;
+          flex-wrap: none;
+
+          .new-row-configurator__label {
+            margin: 10px 0;
+            width: 100%;
+            & > input {
+              width: 100%;
+            }
+          }
+        }
       }
     }
   }
